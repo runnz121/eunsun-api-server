@@ -1,0 +1,83 @@
+service: eunsun-api-server
+variablesResolutionMode: 20210326
+frameworkVersion: '3'
+useDotenv: true
+plugins:
+  - serverless-offline
+package:
+  patterns:
+    - '!.**'
+    - ./bin/**
+    - '!readme.md'
+    - '!*.yml'
+    - '!serverless-config/**'
+provider:
+  name: aws
+  runtime: go1.x
+  region: ap-northeast-2
+  stackName: ${self:service}-${sls:stage}
+  stage: dev
+  apiName: ${self:service}-${sls:stage}
+  endpointType: REGIONAL
+  apiGateway:
+    apiKeySourceType: HEADER
+    description: ${self:service}-${sls:stage} rest api-gateway
+    disableDefaultEndpoint: true
+  logRetentionInDays: 90
+#  iam:
+#    role: ${self:custom.config.iam}
+#  deploymentBucket:
+#    name: ${self:custom.config.deploymentBucket}
+#    serverSideEncryption: AES256
+  stackTags:
+    Service: ${self:service}
+    Env: ${sls:stage}
+
+functions:
+  function1:
+    handler: bin/function1
+  function2:
+    handler: bin/function2
+  function3:
+    handler: bin/function3
+  function4:
+    handler: bin/function4
+#    description: ${self:service} function
+#    memorySize: 128
+#    timeout: 30
+#    reservedConcurrency: ${self:custom.config.functions.reservedConcurrency}
+#    provisionedConcurrency: ${self:custom.config.functions.provisionedConcurrency}
+#    environment:
+#      # current profile
+#      PROFILE: ${self:custom.env.profile}
+      # master Aurora
+#      MASTER_DB_HOST: ${self:custom.env.datasource.master.host}
+#      MASTER_DB_PORT: ${self:custom.env.datasource.master.port}
+#      MASTER_DB_USER: ${self:custom.env.datasource.master.user}
+#      MASTER_DB_PASS: ${self:custom.env.datasource.master.password}
+#      MASTER_DB_NAME: ${self:custom.env.datasource.master.name}
+#      # slave Aurora
+#      SLAVE_DB_HOST: ${self:custom.env.datasource.slave.host}
+#      SLAVE_DB_PORT: ${self:custom.env.datasource.slave.port}
+#      SLAVE_DB_USER: ${self:custom.env.datasource.slave.user}
+#      SLAVE_DB_PASS: ${self:custom.env.datasource.slave.password}
+#      SLAVE_DB_NAME: ${self:custom.env.datasource.slave.name}
+      # redis env
+#      REDIS_HOST: ${self:custom.env.datasource.redis.host}
+
+#    events:
+#      # apigateway 생성을 위한 default path
+#      - http:
+#          path: /
+#          method: get
+
+custom:
+#  env: '${file(./serverless-config/${sls:stage}/environment.yml)}'
+#  config: '${file(./serverless-config/${sls:stage}/config.yml)}'
+  serverless-offline:
+    useDocker: true
+    httpPort: 4000
+    dockerReadOnly: false
+    noTimeout: true
+  importApiGateway:
+    name: ${self:service}-gateway-${sls:stage}
