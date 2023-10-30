@@ -42,26 +42,26 @@ functions:
     handler: bin/function3
   function4:
     handler: bin/function4
-#    description: ${self:service} function
-#    memorySize: 128
-#    timeout: 30
+    description: ${self:service} function
+    memorySize: 128
+    timeout: 30
 #    reservedConcurrency: ${self:custom.config.functions.reservedConcurrency}
 #    provisionedConcurrency: ${self:custom.config.functions.provisionedConcurrency}
-#    environment:
-#      # current profile
-#      PROFILE: ${self:custom.env.profile}
-      # master Aurora
-#      MASTER_DB_HOST: ${self:custom.env.datasource.master.host}
-#      MASTER_DB_PORT: ${self:custom.env.datasource.master.port}
-#      MASTER_DB_USER: ${self:custom.env.datasource.master.user}
-#      MASTER_DB_PASS: ${self:custom.env.datasource.master.password}
-#      MASTER_DB_NAME: ${self:custom.env.datasource.master.name}
-#      # slave Aurora
-#      SLAVE_DB_HOST: ${self:custom.env.datasource.slave.host}
-#      SLAVE_DB_PORT: ${self:custom.env.datasource.slave.port}
-#      SLAVE_DB_USER: ${self:custom.env.datasource.slave.user}
-#      SLAVE_DB_PASS: ${self:custom.env.datasource.slave.password}
-#      SLAVE_DB_NAME: ${self:custom.env.datasource.slave.name}
+    environment:
+#     current profile
+      PROFILE: ${self:custom.env.profile}
+#       master Aurora
+      MASTER_DB_HOST: ${self:custom.env.datasource.master.host}
+      MASTER_DB_PORT: ${self:custom.env.datasource.master.port}
+      MASTER_DB_USER: ${self:custom.env.datasource.master.user}
+      MASTER_DB_PASS: ${self:custom.env.datasource.master.password}
+      MASTER_DB_NAME: ${self:custom.env.datasource.master.name}
+      # slave Aurora
+      SLAVE_DB_HOST: ${self:custom.env.datasource.slave.host}
+      SLAVE_DB_PORT: ${self:custom.env.datasource.slave.port}
+      SLAVE_DB_USER: ${self:custom.env.datasource.slave.user}
+      SLAVE_DB_PASS: ${self:custom.env.datasource.slave.password}
+      SLAVE_DB_NAME: ${self:custom.env.datasource.slave.name}
       # redis env
 #      REDIS_HOST: ${self:custom.env.datasource.redis.host}
 
