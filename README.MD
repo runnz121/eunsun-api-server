@@ -4,4 +4,10 @@
 
 - Golang
 - lambda
-- servelress 3
+- serverless 3
+
+
+### 개요
+
+- cloudFormation 을 통해 lambda 설정 자동 구성
+- json 형태의 값을 바로 호출 및 필요시 객체 생성 후 변환
