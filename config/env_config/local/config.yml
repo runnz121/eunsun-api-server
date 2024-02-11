@@ -1,0 +1,18 @@
+iam:
+deploymentBucket:
+functions:
+  cors:
+    origin: '*'
+    headers:
+      - '*'
+      - Os-Type
+      - App-Version
+      - Authorization
+      - Content-Type
+      - X-Forwarded-For
+      - device_uuid
+      - X-Api-Key
+  allowCredentials: true
+  vpc:
+    securityGroupIds:
+    subnetIds:

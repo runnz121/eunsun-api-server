@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "serverless-aws-secrets": "^0.4.3"
+  }
+}
